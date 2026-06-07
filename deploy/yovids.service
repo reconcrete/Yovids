@@ -1,0 +1,24 @@
+# systemd unit to auto-start the bot on boot.
+#
+# This is a TEMPLATE — replace <USER> and <PROJECT_DIR> with real values, or
+# generate it automatically (see DEPLOY-RASPBERRY-PI.md, "Auto-start" section).
+# The local Bot API server is a Docker container with restart=unless-stopped, so
+# it comes back on boot on its own once Docker is enabled — only the bot needs
+# this service.
+
+[Unit]
+Description=Yovids Telegram YouTube downloader bot
+After=docker.service network-online.target
+Requires=docker.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=<USER>
+WorkingDirectory=<PROJECT_DIR>
+ExecStart=<PROJECT_DIR>/.venv/bin/python <PROJECT_DIR>/bot.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
