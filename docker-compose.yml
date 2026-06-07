@@ -8,6 +8,8 @@
 #   docker compose logs -f      # watch logs
 #   docker compose down         # stop it
 
+name: yovids
+
 services:
   telegram-bot-api:
     image: aiogram/telegram-bot-api:latest
