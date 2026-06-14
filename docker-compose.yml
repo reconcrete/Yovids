@@ -20,6 +20,8 @@ services:
       TELEGRAM_API_HASH: ${TELEGRAM_API_HASH}
       # Max upload size in bytes (2000 MB). The server caps at 2 GB.
       TELEGRAM_MAX_WEBHOOK_CONNECTIONS: "100"
+      # Log warnings/errors (incl. why an upload relay to Telegram is dropped).
+      TELEGRAM_VERBOSITY: "2"
     ports:
       - "8081:8081"
     volumes:
